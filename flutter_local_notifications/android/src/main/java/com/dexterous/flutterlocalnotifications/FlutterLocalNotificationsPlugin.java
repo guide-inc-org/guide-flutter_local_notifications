@@ -264,6 +264,12 @@ public class FlutterLocalNotificationsPlugin
     intent.setAction(SELECT_NOTIFICATION);
     intent.putExtra(NOTIFICATION_ID, notificationDetails.id);
     intent.putExtra(PAYLOAD, notificationDetails.payload);
+    // Fix: Add these flags to prevent application restart
+    // This combination ensures the Activity is brought to the top, clears
+    // anything above it, and prevents its recreation.
+    // ref: https://github.com/MaikuB/flutter_local_notifications/issues/2712
+    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
     int flags = PendingIntent.FLAG_UPDATE_CURRENT;
     if (VERSION.SDK_INT >= VERSION_CODES.M) {
       flags |= PendingIntent.FLAG_IMMUTABLE;
