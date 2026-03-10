@@ -270,7 +270,8 @@ public class FlutterLocalNotificationsPlugin
     }
     Intent intent = getLaunchIntent(context);
     // CLEAR_TOP: removes activities above MainActivity, keeping back stack clean after SSO
-    // SINGLE_TOP: if MainActivity is already at top, call onNewIntent instead of creating new instance
+    // SINGLE_TOP: if MainActivity is already at top, call onNewIntent instead of creating new
+    // instance
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     intent.setAction(SELECT_NOTIFICATION);
     intent.putExtra(NOTIFICATION_ID, notificationDetails.id);
