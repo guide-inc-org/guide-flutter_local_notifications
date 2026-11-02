@@ -4,6 +4,9 @@ on:
   - push
   - workflow_dispatch
 
+permissions:
+  contents: write  # 整形の結果をコミットして push する（GITHUB_TOKEN の既定を読み取りだけにしても動くように）
+
 jobs:
   java_format:
     runs-on: ubuntu-latest
