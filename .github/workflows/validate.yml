@@ -318,9 +318,11 @@ jobs:
   #         script: melos run test:integration
   integration_tests_ios:
     name: Run integration tests (iOS)
-    runs-on: macos-latest
-    # The latest stable (3.47.x) builds the example but the test run hangs
-    # after "Xcode build done"; 3.38.1 is the version the other pinned jobs use.
+    # macos-latest is macos-26 (iOS 26 simulators). There the test run cannot
+    # attach to the app: 3.47.x hangs after "Xcode build done" and 3.38.1 fails
+    # with "Error waiting for a debug connection: The log reader failed
+    # unexpectedly". Run on macos-15 (iOS 18 simulators) instead.
+    runs-on: macos-15
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
@@ -335,7 +337,7 @@ jobs:
       - uses: futureware-tech/simulator-action@v5
         id: simulator-action
         with:
-          model: 'iPhone 17'
+          model: 'iPhone 16'
       - name: Install applesimutils
         run: |
           brew tap wix/brew
