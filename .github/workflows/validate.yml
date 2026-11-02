@@ -182,7 +182,9 @@ jobs:
         run: melos run build:example_linux
   build_example_windows_stable:
     name: Build Windows example app (stable channel)
-    runs-on: windows-latest
+    # VS 2022: windows-latest is VS 2026 (MSVC 14.51), which rejects <experimental/coroutine> (STL1011).
+    # Upstream fixed this in the plugin code instead (upstream commits 56cb862 and 055bf14).
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v6
       - uses: subosito/flutter-action@v2
@@ -207,7 +209,8 @@ jobs:
           dart run msix:create
   build_example_windows_min_flutter:
     name: Build Windows example app (3.38.1)
-    runs-on: windows-latest
+    # Flutter 3.38.1 does not know VS 2026 and falls back to the VS 2019 generator (same pin as upstream 56cb862)
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v6
       - uses: subosito/flutter-action@v2
@@ -265,7 +268,8 @@ jobs:
         run: melos run test:unit:android
   unit_tests_windows:
     name: Run Windows unit tests (Dart)
-    runs-on: windows-latest
+    # VS 2022: see build_example_windows_stable
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v6
       - uses: subosito/flutter-action@v2
@@ -327,10 +331,11 @@ jobs:
       - uses: futureware-tech/simulator-action@v5
         id: simulator-action
         with:
-          model: 'iPhone 16'
+          model: 'iPhone 17'
       - name: Install applesimutils
         run: |
           brew tap wix/brew
+          brew trust wix/brew
           brew install applesimutils
       - name: Grant notification permissions
         run: applesimutils --byId ${{ steps.simulator-action.outputs.udid}} --bundle com.dexterous.flutterLocalNotificationsExample --setPermissions notifications=YES
