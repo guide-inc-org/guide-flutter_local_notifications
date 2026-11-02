@@ -319,11 +319,15 @@ jobs:
   integration_tests_ios:
     name: Run integration tests (iOS)
     runs-on: macos-latest
+    # The latest stable (3.47.x) builds the example but the test run hangs
+    # after "Xcode build done"; 3.38.1 is the version the other pinned jobs use.
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+          flutter-version: 3.38.1
           cache: true
           cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:'
       - name: Install Tools
