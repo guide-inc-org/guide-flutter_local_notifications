@@ -20,8 +20,8 @@ jobs:
     name: Run Dart Analyzer
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version: 3.38.1
@@ -30,7 +30,7 @@ jobs:
       - name: Install Tools
         run: ./.github/workflows/scripts/install-tools.sh
       - name: Analyze
-        uses: invertase/github-action-dart-analyzer@v3
+        uses: invertase/github-action-dart-analyzer@v3.0.0
         with:
           fatal-infos: true
           fatal-warnings: true
@@ -38,8 +38,8 @@ jobs:
     name: Dart formatting checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -52,12 +52,12 @@ jobs:
     name: Build Android example app (stable channel)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-java@v5
+      - uses: actions/checkout@v6.1.0
+      - uses: actions/setup-java@v5.7.0
         with:
           distribution: 'zulu'
           java-version: '21'
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -70,12 +70,12 @@ jobs:
       name: Build Android example app (3.38.1)
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v6
-        - uses: actions/setup-java@v5
+        - uses: actions/checkout@v6.1.0
+        - uses: actions/setup-java@v5.7.0
           with:
             distribution: 'zulu'
             java-version: '21'
-        - uses: subosito/flutter-action@v2
+        - uses: subosito/flutter-action@v2.23.0
           with:
             channel: stable
             flutter-version: 3.38.1
@@ -89,8 +89,8 @@ jobs:
     name: Build iOS example app (stable channel)
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -103,8 +103,8 @@ jobs:
     name: Build iOS example app (3.38.1)
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version: 3.38.1
@@ -118,8 +118,8 @@ jobs:
     name: Build macOS example app (stable channel)
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -132,8 +132,8 @@ jobs:
     name: Build macOS example app (3.38.1)
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version: 3.38.1
@@ -147,8 +147,8 @@ jobs:
     name: Build Linux example app (stable channel)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -165,8 +165,8 @@ jobs:
     name: Build Linux example app (3.38.1)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version: 3.38.1
@@ -186,8 +186,8 @@ jobs:
     # Upstream fixed this in the plugin code instead (upstream commits 56cb862 and 055bf14).
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -212,8 +212,8 @@ jobs:
     # Flutter 3.38.1 does not know VS 2026 and falls back to the VS 2019 generator (same pin as upstream 56cb862)
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version: 3.38.1
@@ -238,8 +238,8 @@ jobs:
     name: Run all unit tests except for Windows (Dart)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -252,12 +252,12 @@ jobs:
     name: Run all unit tests (Android)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-java@v5
+      - uses: actions/checkout@v6.1.0
+      - uses: actions/setup-java@v5.7.0
         with:
           distribution: 'zulu'
           java-version: '21'
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -271,8 +271,8 @@ jobs:
     # VS 2022: see build_example_windows_stable
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           cache: true
@@ -329,8 +329,8 @@ jobs:
     # signal, but do not fail the whole workflow on it until it is fixed.
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v6.1.0
+      - uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version: 3.38.1
